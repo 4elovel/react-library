@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
 import styled from "styled-components";
 import slug from "slug";
@@ -47,6 +47,9 @@ const AddBookForm = ({ onAdd, isVisible, setIsVisible }) => {
     setTitle("");
     setMySlug("");
   };
+  useEffect(() => {
+    setMySlug(slug(title));
+  }, [title]);
   if (isVisible) {
     return ReactDom.createPortal(
       <>
@@ -57,11 +60,10 @@ const AddBookForm = ({ onAdd, isVisible, setIsVisible }) => {
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
-              setMySlug(slug(e.target.value));
             }}
             placeholder="Enter book title"
           />
-          <Input type="text" value={mySlug} placeholder="Slug"readOnly/>
+          <Input type="text" value={mySlug} placeholder="Slug" readOnly />
           <Button type="submit">Add Book</Button>
         </Form>
       </>,
