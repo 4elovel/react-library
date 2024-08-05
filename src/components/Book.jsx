@@ -7,11 +7,16 @@ const BookContainer = styled.div`
   padding: 10px;
   border-bottom: 1px solid #ccc;
 `;
+const CenteredSpan = styled.span`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+`
 
 const Book = ({ book, onDelete }) => {
   return (
     <BookContainer>
-      <span>{book.title}</span>
+      <CenteredSpan>{book.title}</CenteredSpan>
       <button onClick={onDelete}>Delete</button>
     </BookContainer>
   );
