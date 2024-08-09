@@ -11,7 +11,6 @@ const Container = styled.div`
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: calc(50vw - 80px);
 `;
 const Button = styled.button`
   padding: 10px;
@@ -58,19 +57,26 @@ const App = () => {
     return 0;
   });
 
-
-const [addFormVisible,setAddFormVisibility] = useState(false)
+  const [addFormVisible, setAddFormVisibility] = useState(false);
 
   return (
     <Container>
       <h1>Book Library</h1>
-      <AddBookForm onAdd={addBook} isVisible={addFormVisible} setIsVisible={setAddFormVisibility} />
-      <Button onClick={()=>setAddFormVisibility(true)}>add Book</Button>
+      <AddBookForm
+        onAdd={addBook}
+        isVisible={addFormVisible}
+        setIsVisible={setAddFormVisibility}
+      />
+      <Button onClick={() => setAddFormVisibility(true)}>add Book</Button>
       <FilterAndSort
         onFilterChange={handleFilterChange}
         onSortChange={handleSortChange}
       />
-      <BookList books={sortedBooks} onDelete={deleteBook} addInitialBooks={addInitialBooks} />
+      <BookList
+        books={sortedBooks}
+        onDelete={deleteBook}
+        addInitialBooks={addInitialBooks}
+      />
     </Container>
   );
 };
